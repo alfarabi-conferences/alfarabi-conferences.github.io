@@ -256,6 +256,27 @@ footer .wrap{padding-block:22px;display:flex;justify-content:space-between;gap:1
    - بعد end: ينتقل وحده إلى "المؤتمرات المنجزة" */
 var CONFERENCES = [
   {
+    title: "المؤتمر الدولي الرابع: التحول التكنولوجي ومستقبل العلوم في خدمة الإنسان والتنمية",
+    theme: "جامعة العقبة للتكنولوجيا وجامعة إربد الأهلية بالتعاون مع جامعة القدس المفتوحة ومؤسسة الفارابي",
+    start: "2027-03-28", end: "2027-03-30", deadline: "2027-01-30",
+    venue: "جامعة العقبة للتكنولوجيا – العقبة", mode: "وجاهيًا وعن بُعد", axes: 17,
+    link: "tech-2027/"
+  },
+  {
+    title: "المؤتمر الدولي الخامس: الأمن السيبراني في المجتمع الرقمي",
+    theme: "مقاربة قانونية واجتماعية لحماية الأفراد والمؤسسات · جامعة العقبة للتكنولوجيا وجامعة إربد الأهلية بالتعاون مع مؤسسة الفارابي",
+    start: "2027-03-28", end: "2027-03-30", deadline: "2027-01-30",
+    venue: "جامعة العقبة للتكنولوجيا – العقبة", mode: "وجاهيًا وعن بُعد", axes: 10,
+    link: "cyber-2027/"
+  },
+  {
+    title: "المؤتمر الدولي السادس: مستقبل المال والأعمال في ظل التحول الرقمي والابتكار التكنولوجي",
+    theme: "جامعة العقبة للتكنولوجيا وجامعة إربد الأهلية بالتعاون مع جامعة القدس المفتوحة ومؤسسة الفارابي",
+    start: "2027-03-28", end: "2027-03-30", deadline: "2027-01-30",
+    venue: "جامعة العقبة للتكنولوجيا – العقبة", mode: "وجاهيًا وعن بُعد", axes: 10,
+    link: "finance-2027/"
+  },
+  {
     title: "المؤتمر العلمي الدولي المحكم الأول",
     theme: "التحديات المعاصرة للمجتمعات العربية واستراتيجيات معالجتها في ضوء التكنولوجيا الحديثة",
     start: "2026-02-11",
@@ -297,9 +318,9 @@ var CONFERENCES = [
     if(c.partners)meta.push("بالتعاون مع "+esc(c.partners));
     if(c.mode)meta.push(esc(c.mode));
     if(c.axes)meta.push(c.axes+" محورًا");
-    if(c._st==="open"&&c._dl)meta.push("آخر موعد للأبحاث: "+fmt(c._dl));
+    if(c._st==="open"&&c._dl)meta.push("آخر موعد للملخصات: "+fmt(c._dl));
     var acts="";
-    if(c.link)acts+='<a class="btn btn-line" href="'+esc(c.link)+'" target="_blank" rel="noopener">'+(c._st==="done"?"تفاصيل المؤتمر":"موقع المؤتمر والتسجيل")+'</a>';
+    if(c.link)acts+='<a class="btn btn-line" href="'+esc(c.link)+'">'+(c._st==="done"?"تفاصيل المؤتمر":"التفاصيل والتسجيل")+'</a>';
     if(c._st==="open"&&c._dl){var n=Math.round((c._dl-today)/864e5);acts+='<span class="countdown">'+(n===0?"اليوم آخر يوم للتسجيل":"باقٍ "+n+" يومًا على إغلاق التسجيل")+'</span>';}
     return '<article class="conf'+(c._st==="done"?" done":"")+'">'
       +'<div class="date"><b>'+t.b+'</b><span>'+t.y+'</span></div>'
@@ -313,8 +334,8 @@ var CONFERENCES = [
     '<div class="empty"><div><h4>يُعلن عن المؤتمر القادم قريبًا</h4><p>لا يوجد مؤتمر مفتوح للتسجيل حاليًا. راسلنا لنُعلمك فور الإعلان عن الموعد والمحاور.</p></div>'
     +'<a class="btn btn-wa" href="'+wa+'" target="_blank" rel="noopener">أعلمني عند الإعلان</a></div>';
   document.getElementById("done").innerHTML = done.length ? done.map(card).join("") : '<div class="empty"><p>لا توجد مؤتمرات منجزة بعد.</p></div>';
-  document.getElementById("up-count").textContent = up.length ? up.length+" قادم" : "";
-  document.getElementById("done-count").textContent = done.length ? done.length+" منجز" : "";
+  document.getElementById("up-count").textContent = up.length ? up.length+" مؤتمرات" : "";
+  document.getElementById("done-count").textContent = done.length ? done.length+" مؤتمر" : "";
 })();
 </script>
 <script>
