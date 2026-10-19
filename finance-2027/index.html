@@ -38,8 +38,11 @@ a{color:inherit}
 .hero h1{font-family:var(--display);font-weight:700;font-size:clamp(1.55rem,4vw,2.3rem);line-height:1.45;margin:6px 0 4px;text-wrap:balance}
 .en{direction:ltr;text-align:right;font-size:.95rem;opacity:.8;margin:0 0 14px;font-style:italic}
 .org{margin:0;font-size:.95rem;opacity:.9;max-width:70ch}
-.status{display:inline-flex;align-items:center;gap:8px;margin-top:18px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:4px 14px;font-size:.88rem;font-weight:600}
-.status::before{content:"";width:8px;height:8px;border-radius:50%;background:#5fd398}
+.status{display:inline-flex;align-items:center;gap:8px;margin-top:18px;background:#c0262d;border:1px solid #e0565c;color:#fff;border-radius:99px;padding:5px 16px;font-size:.92rem;font-weight:700}
+.status.closed{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:#fff}
+@media (prefers-reduced-motion:no-preference){.status:not(.closed)::before{animation:blink 1.4s ease-in-out infinite}}
+@keyframes blink{50%{opacity:.25}}
 .status.closed::before{background:#e0b14a}
 .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.97rem}
