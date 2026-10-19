@@ -13,18 +13,18 @@
 :root{
   --bg:#f5f7fb; --surface:#ffffff; --fg:#14213d; --muted:#55607a;
   --navy:#1b2f6b; --navy-ink:#ffffff; --gold:#c9972b; --gold-soft:#f3e6c4;
-  --line:#dfe4ef; --wa:#1f9d55;
+  --line:#dfe4ef; --wa:#1f9d55; --ok:#17794a; --ok-soft:#e1f3e9;
   --display:"Reem Kufi","IBM Plex Sans Arabic",Tahoma,sans-serif;
   --body:"IBM Plex Sans Arabic",Tahoma,"Segoe UI",sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0e1424; --surface:#161e33; --fg:#e7ebf5; --muted:#a3adc6;
   --navy:#16244f; --navy-ink:#ffffff; --gold:#e0b14a; --gold-soft:#3a3120;
-  --line:#28324c; --wa:#2bb56a; color-scheme:dark}}
+  --line:#28324c; --wa:#2bb56a; --ok:#5fd398; --ok-soft:#163a2a; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0e1424; --surface:#161e33; --fg:#e7ebf5; --muted:#a3adc6;
   --navy:#16244f; --navy-ink:#ffffff; --gold:#e0b14a; --gold-soft:#3a3120;
-  --line:#28324c; --wa:#2bb56a; color-scheme:dark}
+  --line:#28324c; --wa:#2bb56a; --ok:#5fd398; --ok-soft:#163a2a; color-scheme:dark}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -76,22 +76,35 @@ h2{font-family:var(--display);font-weight:700;font-size:1.65rem;margin:2px 0 18p
 .pillar p{margin:0;color:var(--muted);font-size:.93rem;line-height:1.7}
 
 /* conferences */
+.conf-group + .conf-group{margin-top:34px}
+.group-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.group-head h3{margin:0;font-family:var(--display);font-size:1.25rem}
+.group-head .count{font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .conf-list{display:grid;gap:16px}
-.conf{display:grid;grid-template-columns:120px 1fr auto;gap:20px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px}
+.conf{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:20px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px}
 .conf .date{text-align:center;border-left:1px solid var(--line);padding-left:16px}
-.conf .date b{display:block;font-family:var(--display);font-size:1.7rem;line-height:1.2;color:var(--navy)}
+.conf .date b{display:block;font-family:var(--display);font-size:1.7rem;line-height:1.2;color:var(--navy);font-variant-numeric:tabular-nums}
 :root[data-theme="dark"] .conf .date b{color:var(--gold)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .conf .date b{color:var(--gold)}}
 .conf .date span{font-size:.85rem;color:var(--muted)}
-.conf h3{margin:0;font-size:1.12rem;line-height:1.6}
-.conf .sub{margin:4px 0 0;color:var(--muted);font-size:.93rem;min-width:0}
-.tag{display:inline-block;font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--gold-soft);color:var(--fg);margin-bottom:6px}
-.btn-line{border:1.5px solid var(--navy);color:var(--navy);background:transparent}
+.conf h4{margin:0;font-size:1.12rem;line-height:1.6}
+.conf .sub{margin:4px 0 0;color:var(--muted);font-size:.93rem}
+.conf .meta{display:flex;flex-wrap:wrap;gap:6px 16px;margin:10px 0 0;padding:0;list-style:none;font-size:.86rem;color:var(--muted)}
+.conf .acts{display:flex;flex-direction:column;gap:8px;align-items:stretch}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:600;padding:3px 12px;border-radius:99px;margin-bottom:8px}
+.status::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.st-open,.st-live{background:var(--ok-soft);color:var(--ok)}
+.st-soon{background:var(--gold-soft);color:var(--fg)}
+.st-done{background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.conf.done{background:transparent}
+.conf.done .date b{color:var(--muted)!important}
+.countdown{font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums;text-align:center}
+.btn-line{border:1.5px solid var(--navy);color:var(--navy);background:transparent;justify-content:center}
 :root[data-theme="dark"] .btn-line{border-color:var(--gold);color:var(--gold)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn-line{border-color:var(--gold);color:var(--gold)}}
-.conf.soon{border-style:dashed;background:transparent}
-.conf.soon h3{color:var(--muted)}
-
+.empty{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border:1.5px dashed var(--line);border-radius:12px;padding:22px}
+.empty h4{margin:0 0 2px;font-size:1.05rem}
+.empty p{margin:0;color:var(--muted);font-size:.93rem}
 /* team */
 .team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .person{display:flex;gap:16px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
@@ -117,6 +130,7 @@ footer .wrap{padding-block:22px;display:flex;justify-content:space-between;gap:1
   .seal{width:120px;height:120px}
   .pillars,.contact,.team{grid-template-columns:1fr}
   .conf{grid-template-columns:1fr;text-align:right}
+  .conf .acts{flex-direction:row;flex-wrap:wrap}
   .conf .date{border-left:0;border-bottom:1px solid var(--line);padding:0 0 10px;text-align:right;display:flex;gap:10px;align-items:baseline}
   nav ul{gap:0}
   nav a{padding:6px 8px;font-size:.9rem}
@@ -177,24 +191,15 @@ footer .wrap{padding-block:22px;display:flex;justify-content:space-between;gap:1
     <div class="wrap">
       <p class="eyebrow">مؤتمراتنا</p>
       <h2>المؤتمرات العلمية</h2>
-      <div class="conf-list">
-        <article class="conf">
-          <div class="date"><b>11–12</b><span>فبراير 2026</span></div>
-          <div style="min-width:0">
-            <span class="tag">انعقد في فبراير 2026</span>
-            <h3>المؤتمر العلمي الدولي المحكم الأول</h3>
-            <p class="sub">التحديات المعاصرة للمجتمعات العربية واستراتيجيات معالجتها في ضوء التكنولوجيا الحديثة · جامعة إربد الأهلية</p>
-          </div>
-          <a class="btn btn-line" href="conference-2026/" target="_blank" rel="noopener">موقع المؤتمر</a>
-        </article>
-        <article class="conf soon">
-          <div class="date"><b>قريبًا</b><span>2027</span></div>
-          <div style="min-width:0">
-            <h3>المؤتمر القادم</h3>
-            <p class="sub">سيُعلن عن موعده ومحاوره قريبًا. تابعونا عبر الواتساب.</p>
-          </div>
-          <span></span>
-        </article>
+
+      <div class="conf-group">
+        <div class="group-head"><h3>المؤتمرات القادمة</h3><span class="count" id="up-count"></span></div>
+        <div class="conf-list" id="upcoming"></div>
+      </div>
+
+      <div class="conf-group">
+        <div class="group-head"><h3>المؤتمرات المنجزة</h3><span class="count" id="done-count"></span></div>
+        <div class="conf-list" id="done"></div>
       </div>
     </div>
   </section>
@@ -241,6 +246,77 @@ footer .wrap{padding-block:22px;display:flex;justify-content:space-between;gap:1
   </div>
 </footer>
 
+<script>
+/* ===== قائمة المؤتمرات =====
+   لإضافة مؤتمر جديد: انسخ كتلة { ... } كاملة والصق نسخة منها بعدها (مع فاصلة بينهما)، ثم عدّل البيانات.
+   التواريخ بصيغة سنة-شهر-يوم.
+   الحالة تتغيّر تلقائيًا حسب التاريخ:
+   - قبل deadline: باب التسجيل مفتوح (مع عدّاد الأيام)
+   - بعد deadline وقبل start: أُغلق التسجيل · يُعقد قريبًا
+   - بعد end: ينتقل وحده إلى "المؤتمرات المنجزة" */
+var CONFERENCES = [
+  {
+    title: "المؤتمر العلمي الدولي المحكم الأول",
+    theme: "التحديات المعاصرة للمجتمعات العربية واستراتيجيات معالجتها في ضوء التكنولوجيا الحديثة",
+    start: "2026-02-11",
+    end: "2026-02-12",
+    deadline: "2026-01-25",
+    venue: "جامعة إربد الأهلية",
+    partners: "ملتقى الشفا الثقافي",
+    mode: "حضوريًا وعن بُعد",
+    axes: 11,
+    link: "conference-2026/"
+  }
+];
+
+(function(){
+  var M=["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];
+  function d(x){var p=x.split("-");return new Date(+p[0],+p[1]-1,+p[2]);}
+  function esc(t){return String(t==null?"":t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+  var today=new Date(); today.setHours(0,0,0,0);
+  var up=[],done=[];
+  CONFERENCES.forEach(function(c){
+    c._s=d(c.start); c._e=d(c.end||c.start); c._dl=c.deadline?d(c.deadline):null;
+    if(today>c._e){c._st="done";done.push(c);}
+    else{c._st = today>=c._s ? "live" : (c._dl && today<=c._dl ? "open" : "soon"); up.push(c);}
+  });
+  up.sort(function(a,b){return a._s-b._s;});
+  done.sort(function(a,b){return b._s-a._s;});
+  var label={open:"باب التسجيل واستقبال الأبحاث مفتوح",soon:"أُغلق التسجيل · يُعقد قريبًا",live:"يُعقد الآن",done:"انعقد · انتهى التسجيل"};
+  function when(c){
+    var s=c._s,e=c._e,b;
+    if(+s===+e) b=s.getDate();
+    else if(s.getMonth()===e.getMonth()) b=s.getDate()+"–"+e.getDate();
+    else b=s.getDate()+"/"+(s.getMonth()+1)+"–"+e.getDate()+"/"+(e.getMonth()+1);
+    return {b:b,y:M[s.getMonth()]+" "+s.getFullYear()};
+  }
+  function fmt(x){return x.getDate()+" "+M[x.getMonth()]+" "+x.getFullYear();}
+  function card(c){
+    var t=when(c),meta=[];
+    if(c.venue)meta.push(esc(c.venue));
+    if(c.partners)meta.push("بالتعاون مع "+esc(c.partners));
+    if(c.mode)meta.push(esc(c.mode));
+    if(c.axes)meta.push(c.axes+" محورًا");
+    if(c._st==="open"&&c._dl)meta.push("آخر موعد للأبحاث: "+fmt(c._dl));
+    var acts="";
+    if(c.link)acts+='<a class="btn btn-line" href="'+esc(c.link)+'" target="_blank" rel="noopener">'+(c._st==="done"?"تفاصيل المؤتمر":"موقع المؤتمر والتسجيل")+'</a>';
+    if(c._st==="open"&&c._dl){var n=Math.round((c._dl-today)/864e5);acts+='<span class="countdown">'+(n===0?"اليوم آخر يوم للتسجيل":"باقٍ "+n+" يومًا على إغلاق التسجيل")+'</span>';}
+    return '<article class="conf'+(c._st==="done"?" done":"")+'">'
+      +'<div class="date"><b>'+t.b+'</b><span>'+t.y+'</span></div>'
+      +'<div style="min-width:0"><span class="status st-'+c._st+'">'+label[c._st]+'</span>'
+      +'<h4>'+esc(c.title)+'</h4>'+(c.theme?'<p class="sub">'+esc(c.theme)+'</p>':'')
+      +(meta.length?'<ul class="meta"><li>'+meta.join('</li><li>')+'</li></ul>':'')+'</div>'
+      +'<div class="acts">'+acts+'</div></article>';
+  }
+  var wa="https://wa.me/962772215825?text="+encodeURIComponent("السلام عليكم، أرغب في معرفة موعد المؤتمر القادم لمؤسسة الفارابي.");
+  document.getElementById("upcoming").innerHTML = up.length ? up.map(card).join("") :
+    '<div class="empty"><div><h4>يُعلن عن المؤتمر القادم قريبًا</h4><p>لا يوجد مؤتمر مفتوح للتسجيل حاليًا. راسلنا لنُعلمك فور الإعلان عن الموعد والمحاور.</p></div>'
+    +'<a class="btn btn-wa" href="'+wa+'" target="_blank" rel="noopener">أعلمني عند الإعلان</a></div>';
+  document.getElementById("done").innerHTML = done.length ? done.map(card).join("") : '<div class="empty"><p>لا توجد مؤتمرات منجزة بعد.</p></div>';
+  document.getElementById("up-count").textContent = up.length ? up.length+" قادم" : "";
+  document.getElementById("done-count").textContent = done.length ? done.length+" منجز" : "";
+})();
+</script>
 <script>
 document.getElementById('copy-phone').addEventListener('click', function(){
   var b=this, t=document.getElementById('phone').textContent.trim();
