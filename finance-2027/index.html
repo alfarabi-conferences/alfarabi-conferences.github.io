@@ -47,6 +47,7 @@ a{color:inherit}
 .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.97rem}
 .btn-wa{background:var(--wa);color:#fff}
+.btn-reg{background:#c0262d;color:#fff}
 .btn-fb{background:#1877f2;color:#fff}
 .btn-ghost{border:1.5px solid rgba(255,255,255,.5);color:#fff}
 .btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
@@ -96,6 +97,33 @@ footer .wrap{padding-block:20px;display:flex;justify-content:space-between;gap:1
   .people,.bank,.sibs{grid-template-columns:1fr}
   .axes{columns:1}
 }
+
+/* registration form */
+.reg{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px}
+.reg-intro{margin:0 0 16px;color:var(--muted);font-size:.95rem}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 18px}
+.field{display:flex;flex-direction:column;gap:5px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label,.field legend{font-weight:600;font-size:.93rem;padding:0}
+.req{color:#c0262d}
+.field input,.field select{font:inherit;font-size:.97rem;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);width:100%;min-width:0}
+.field input:focus,.field select:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
+.field .hint{font-size:.82rem;color:var(--muted)}
+fieldset.field{border:0;margin:0;padding:0}
+.choices{display:flex;flex-wrap:wrap;gap:10px}
+.choice{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:8px;padding:9px 14px;background:var(--bg);cursor:pointer;font-weight:500}
+.choice input{width:auto;margin:0;accent-color:var(--navy)}
+.file-box{border:1.5px dashed var(--line);border-radius:10px;padding:14px;background:var(--bg)}
+.file-box input{border:0;padding:0;background:transparent}
+.err{color:#c0262d;font-size:.86rem;font-weight:600;margin:0}
+.submit-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:18px}
+.btn-send{background:#c0262d;color:#fff;border:0;cursor:pointer;font:inherit;font-weight:700;font-size:1rem;padding:12px 28px;border-radius:8px}
+.btn-send[disabled]{opacity:.65;cursor:wait}
+.btn-send:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.hp{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.closed-box{border:1.5px dashed var(--line);border-radius:12px;padding:20px;text-align:center}
+.closed-box b{display:block;font-size:1.1rem;color:#c0262d}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -111,8 +139,9 @@ footer .wrap{padding-block:20px;display:flex;justify-content:space-between;gap:1
   <p class="org">تنظّمه جامعة العقبة للتكنولوجيا وجامعة إربد الأهلية، بالتعاون مع جامعة القدس المفتوحة ومؤسسة الفارابي لتنظيم وإدارة المؤتمرات</p>
   <span class="status" id="status">باب استقبال الملخصات مفتوح</span>
   <div class="actions">
-    <a class="btn btn-wa" href="https://wa.me/962772215825?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D9%85%D8%B4%D8%A7%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%D8%A7%D9%84%D9%85%D8%A4%D8%AA%D9%85%D8%B1%20%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A%20%D8%A7%D9%84%D8%B3%D8%A7%D8%AF%D8%B3%3A%20%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84%20%D8%A7%D9%84%D9%85%D8%A7%D9%84%20%D9%88%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84%20%D9%81%D9%8A%20%D8%B8%D9%84%20%D8%A7%D9%84%D8%AA%D8%AD%D9%88%D9%84%20%D8%A7%D9%84%D8%B1%D9%82%D9%85%D9%8A%20%D9%88%D8%A7%D9%84%D8%A7%D8%A8%D8%AA%D9%83%D8%A7%D8%B1%20%D8%A7%D9%84%D8%AA%D9%83%D9%86%D9%88%D9%84%D9%88%D8%AC%D9%8A" target="_blank" rel="noopener">التسجيل والاستفسار عبر واتساب</a>
+    <a class="btn btn-reg" href="#register">التسجيل وإرسال البحث</a>
     <a class="btn btn-ghost" href="#fees">رسوم المشاركة</a>
+    <a class="btn btn-ghost" href="https://wa.me/962772215825?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D9%85%D8%B4%D8%A7%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%D8%A7%D9%84%D9%85%D8%A4%D8%AA%D9%85%D8%B1%20%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A%20%D8%A7%D9%84%D8%B3%D8%A7%D8%AF%D8%B3%3A%20%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84%20%D8%A7%D9%84%D9%85%D8%A7%D9%84%20%D9%88%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84%20%D9%81%D9%8A%20%D8%B8%D9%84%20%D8%A7%D9%84%D8%AA%D8%AD%D9%88%D9%84%20%D8%A7%D9%84%D8%B1%D9%82%D9%85%D9%8A%20%D9%88%D8%A7%D9%84%D8%A7%D8%A8%D8%AA%D9%83%D8%A7%D8%B1%20%D8%A7%D9%84%D8%AA%D9%83%D9%86%D9%88%D9%84%D9%88%D8%AC%D9%8A" target="_blank" rel="noopener">استفسار عبر واتساب</a>
   </div>
 </div></div>
 
@@ -161,6 +190,81 @@ footer .wrap{padding-block:20px;display:flex;justify-content:space-between;gap:1
     <p class="note">يُرَدّ على الملخصات المقبولة خلال 5 أيام من استلامها، وعلى الأبحاث الكاملة خلال 10 أيام. لغات البحث: العربية والإنجليزية والفرنسية. الملخص 250 كلمة كحد أقصى، والبحث 15–20 صفحة.</p>
   </section>
 
+
+  <section id="register">
+    <h2>التسجيل وإرسال البحث</h2>
+    <div class="reg" id="reg-open">
+      <p class="reg-intro">املأ النموذج وأرفق بحثك أو ملخصك، فيصل مباشرة إلى بريد اللجنة العلمية للمؤتمر. الحقول المعلَّمة بـ <span class="req">*</span> مطلوبة.</p>
+      <form id="reg-form" action="https://formsubmit.co/inu-conferencesc2027@inu.edu.jo" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_subject" value="بحث جديد – المؤتمر الدولي السادس: مستقبل المال والأعمال في ظل التحول الرقمي والابتكار التكنولوجي">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://alfarabi-conferences.github.io/finance-2027/thanks.html">
+        <input type="hidden" name="_autoresponse" value="شكرًا لكم، تم استلام بحثكم في المؤتمر الدولي السادس (مستقبل المال والأعمال في ظل التحول الرقمي والابتكار التكنولوجي) بنجاح. ستصلكم نتيجة التحكيم على هذا البريد الإلكتروني: الرد على الملخصات خلال 5 أيام، وعلى الأبحاث الكاملة خلال 10 أيام. يرجى متابعة بريدكم الإلكتروني بما في ذلك مجلد الرسائل غير المرغوب فيها. للاستفسار: أمين عام المؤتمر د. حسين الربابعة، واتساب 00962772215825. مؤسسة الفارابي للمؤتمرات والبحث العلمي.">
+        <input type="hidden" name="المؤتمر" value="المؤتمر الدولي السادس: مستقبل المال والأعمال في ظل التحول الرقمي والابتكار التكنولوجي">
+        <div class="hp" aria-hidden="true"><label for="hp-finance-2027">اترك هذا الحقل فارغًا</label><input type="text" name="_honey" id="hp-finance-2027" tabindex="-1" autocomplete="off"></div>
+
+        <div class="grid2">
+          <div class="field full">
+            <label for="f-name">الاسم الثلاثي <span class="req">*</span></label>
+            <input id="f-name" name="الاسم الثلاثي" type="text" required autocomplete="name" placeholder="مثال: أحمد محمد علي">
+          </div>
+          <div class="field full">
+            <label for="f-title">عنوان البحث <span class="req">*</span></label>
+            <input id="f-title" name="عنوان البحث" type="text" required>
+          </div>
+          <div class="field">
+            <label for="f-email">البريد الإلكتروني <span class="req">*</span></label>
+            <input id="f-email" name="email" type="email" required autocomplete="email" dir="ltr" placeholder="name@example.com">
+            <span class="hint">تصلك عليه رسالة تأكيد الاستلام ونتيجة التحكيم.</span>
+          </div>
+          <div class="field">
+            <label for="f-phone">رقم الهاتف مع رمز الدولة <span class="req">*</span></label>
+            <input id="f-phone" name="رقم الهاتف" type="tel" required autocomplete="tel" dir="ltr" placeholder="+962 7X XXX XXXX">
+          </div>
+          <div class="field">
+            <label for="f-country">الدولة <span class="req">*</span></label>
+            <input id="f-country" name="الدولة" type="text" required autocomplete="country-name" placeholder="مثال: الأردن">
+          </div>
+          <fieldset class="field">
+            <legend>نوع المشاركة <span class="req">*</span></legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="نوع المشاركة" value="وجاهي (حضوري)" required>وجاهي (حضوري)</label>
+              <label class="choice"><input type="radio" name="نوع المشاركة" value="عن بُعد (أونلاين)">عن بُعد (أونلاين)</label>
+            </div>
+          </fieldset>
+          <div class="field full">
+            <label for="f-axis">رقم المحور واسمه <span class="req">*</span></label>
+            <select id="f-axis" name="المحور" required>
+              <option value="">اختر المحور</option>
+<option value="المحور 1: التحول الرقمي ومستقبل الاقتصاد العالمي">المحور 1: التحول الرقمي ومستقبل الاقتصاد العالمي</option>
+<option value="المحور 2: التكنولوجيا المالية والتحولات الحديثة في القطاع المصرفي">المحور 2: التكنولوجيا المالية والتحولات الحديثة في القطاع المصرفي</option>
+<option value="المحور 3: الحوكمة الرقمية والتشريعات القانونية في بيئة المال والأعمال">المحور 3: الحوكمة الرقمية والتشريعات القانونية في بيئة المال والأعمال</option>
+<option value="المحور 4: ريادة الأعمال الرقمية والابتكار التكنولوجي">المحور 4: ريادة الأعمال الرقمية والابتكار التكنولوجي</option>
+<option value="المحور 5: المحاسبة والتدقيق المالي في عصر التحول الرقمي">المحور 5: المحاسبة والتدقيق المالي في عصر التحول الرقمي</option>
+<option value="المحور 6: التجارة الإلكترونية والتسويق الرقمي ومستقبل الأسواق">المحور 6: التجارة الإلكترونية والتسويق الرقمي ومستقبل الأسواق</option>
+<option value="المحور 7: الإدارة الرقمية ومستقبل المؤسسات وسوق العمل">المحور 7: الإدارة الرقمية ومستقبل المؤسسات وسوق العمل</option>
+<option value="المحور 8: الاقتصاد الإسلامي والصيرفة الإسلامية في ظل التحول الرقمي">المحور 8: الاقتصاد الإسلامي والصيرفة الإسلامية في ظل التحول الرقمي</option>
+<option value="المحور 9: مستقبل المصارف الإسلامية في ظل التحول الرقمي والابتكار المالي والتكنولوجي">المحور 9: مستقبل المصارف الإسلامية في ظل التحول الرقمي والابتكار المالي والتكنولوجي</option>
+<option value="المحور 10: مستقبل المال والأعمال في ظل التحول الرقمي والابتكار التكنولوجي">المحور 10: مستقبل المال والأعمال في ظل التحول الرقمي والابتكار التكنولوجي</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="f-file">إرفاق البحث أو الملخص <span class="req">*</span></label>
+            <div class="file-box"><input id="f-file" name="attachment" type="file" required accept=".doc,.docx,.pdf"></div>
+            <span class="hint">ملف Word أو PDF، بحجم لا يزيد عن 10 ميغابايت.</span>
+            <p class="err" id="f-file-err" hidden></p>
+          </div>
+        </div>
+
+        <div class="submit-row">
+          <button class="btn-send" id="f-send" type="submit">إرسال البحث</button>
+          <span class="hint">بعد الضغط قد تظهر خطوة تحقق قصيرة (أنا لست روبوتًا).</span>
+        </div>
+      </form>
+    </div>
+    <div class="closed-box" id="reg-closed" hidden><b>أُغلق باب استقبال الأبحاث</b><span>انتهى آخر موعد لتقديم الأبحاث الكاملة في 15/2/2027.</span></div>
+  </section>
+
   <section id="fees">
     <h2>رسوم المشاركة</h2>
     <div class="tbl"><table>
@@ -191,7 +295,7 @@ footer .wrap{padding-block:20px;display:flex;justify-content:space-between;gap:1
 
   <section id="contact">
     <h2>التواصل</h2>
-    <p class="lead">للاستفسار والتسجيل: أمين عام المؤتمر الدكتور حسين محمد الربابعة، واتساب <span class="ltr">00962 77 221 5825</span>.</p>
+    <p class="lead">التسجيل وإرسال الأبحاث من <a href="#register">نموذج التسجيل</a> أعلاه. للاستفسار: أمين عام المؤتمر الدكتور حسين محمد الربابعة، واتساب <span class="ltr">00962 77 221 5825</span>.</p>
     <div class="actions"><a class="btn btn-wa" href="https://wa.me/962772215825?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D9%85%D8%B4%D8%A7%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%D8%A7%D9%84%D9%85%D8%A4%D8%AA%D9%85%D8%B1%20%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A%20%D8%A7%D9%84%D8%B3%D8%A7%D8%AF%D8%B3%3A%20%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84%20%D8%A7%D9%84%D9%85%D8%A7%D9%84%20%D9%88%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84%20%D9%81%D9%8A%20%D8%B8%D9%84%20%D8%A7%D9%84%D8%AA%D8%AD%D9%88%D9%84%20%D8%A7%D9%84%D8%B1%D9%82%D9%85%D9%8A%20%D9%88%D8%A7%D9%84%D8%A7%D8%A8%D8%AA%D9%83%D8%A7%D8%B1%20%D8%A7%D9%84%D8%AA%D9%83%D9%86%D9%88%D9%84%D9%88%D8%AC%D9%8A" target="_blank" rel="noopener">مراسلة عبر واتساب</a><a class="btn btn-fb" href="https://www.facebook.com/hussen.rababah" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg>فيسبوك</a></div>
   </section>
 
@@ -210,6 +314,26 @@ footer .wrap{padding-block:20px;display:flex;justify-content:space-between;gap:1
 </div></footer>
 
 <script>
+(function(){
+  var f=document.getElementById("reg-form"); if(!f) return;
+  var t=new Date();t.setHours(0,0,0,0);
+  if(t>new Date(2027,1,15)){document.getElementById("reg-open").hidden=true;document.getElementById("reg-closed").hidden=false;return;}
+  var file=document.getElementById("f-file"),err=document.getElementById("f-file-err"),btn=document.getElementById("f-send");
+  function check(){
+    err.hidden=true;
+    var x=file.files&&file.files[0]; if(!x) return true;
+    if(x.size>10*1024*1024){err.textContent="حجم الملف أكبر من 10 ميغابايت. يرجى تصغيره أو ضغطه ثم إعادة إرفاقه.";err.hidden=false;return false;}
+    if(!/\.(docx?|pdf)$/i.test(x.name)){err.textContent="يُقبل ملف Word أو PDF فقط.";err.hidden=false;return false;}
+    return true;
+  }
+  file.addEventListener("change",check);
+  f.addEventListener("submit",function(ev){
+    if(!check()){ev.preventDefault();file.focus();return;}
+    btn.disabled=true;btn.textContent="جارٍ إرسال البحث…";
+  });
+  window.addEventListener("pageshow",function(){btn.disabled=false;btn.textContent="إرسال البحث";});
+})();
+
 (function(){
   var t=new Date();t.setHours(0,0,0,0);
   function d(x){var p=x.split("-");return new Date(+p[0],+p[1]-1,+p[2]);}
